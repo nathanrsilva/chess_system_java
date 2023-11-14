@@ -25,7 +25,7 @@ public class ChessPosition {
     protected Position toPosition(){
         //8 - chessrow -> 8 - 6 = 2
         //character - 'a' = 63(c) - 61(a) = 2
-        return new Position(8 - row, column - 'a');
+        return new Position(8 - row, column - 'a'); //retorna a Position com valores numericos
     }
 
     protected static ChessPosition fromPosition(Position position){
