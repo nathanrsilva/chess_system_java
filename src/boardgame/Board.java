@@ -29,7 +29,7 @@ public class Board {
             throw new BoardException("Position not on the board");
         }
 
-        return pieces[row][column];
+        return pieces[row][column]; //retorna uma peça
     }
 
     public Piece piece(Position position){
@@ -60,7 +60,7 @@ public class Board {
         if(piece(position) == null){
             return null;
         }
-        Piece aux = piece(position);
+        Piece aux = piece(position); //retorna um peca na posicao passada
         aux.position = null;
         pieces[position.getRow()][position.getColumn()] = null;
         return aux;
@@ -75,7 +75,7 @@ public class Board {
         if (!positionExists(position)){
             throw new BoardException("Position not on the board");
         }
-        return piece(position) != null;
+        return piece(position) != null; //retorna um boolean
     }
 
 

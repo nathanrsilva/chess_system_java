@@ -18,24 +18,26 @@ public class ChessMatch {
         ChessPiece[][] mat = new ChessPiece[board.getRows()][board.getColumns()];
         for (int i = 0; i < board.getRows(); i++){
             for (int j = 0; j < board.getColumns(); j++){
-                mat[i][j] = (ChessPiece) board.piece(i,j); //dowscasting -> chesspiece extends piece
+                mat[i][j] = (ChessPiece) board.piece(i,j);
+                //upcasting -> as pecas que estao no atributo board sao do tipo ChessPiece, ou seja, ja foi feito um upcasting
+                //dowscasting -> chesspiece extends piece
             }
         }
         return mat;
     }
 
     public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition){
-        Position source = sourcePosition.toPosition();
-        Position target = targetPosition.toPosition();
+        Position source = sourcePosition.toPosition(); //de ChessPosition passa a ser Position -> upCasting
+        Position target = targetPosition.toPosition(); //de ChessPosition passa a ser Position -> upCasting
         validateSourcePosition(source);
         Piece capturedPiece = makeMove(source, target);
         return (ChessPiece) capturedPiece;
     }
 
     private Piece makeMove(Position source, Position target){
-        Piece p = board.removePiece(source);
+        Piece p = board.removePiece(source); //retorna a peca com sua posicao valendo null
         Piece capturedPiece = board.removePiece(target);
-        board.placePiece(p, target);
+        board.placePiece(p, target); //a peca(atributo p) e colocoda na posicao target no board e recebe target como sua posicao
         return capturedPiece;
     }
 
@@ -45,12 +47,14 @@ public class ChessMatch {
         }
     }
 
-    private void placeNewPiece(char column, int row, ChessPiece piece){
+    private void placeNewPiece(char column, int row, ChessPiece piece){ //upcasting
         board.placePiece(piece, new ChessPosition(column, row).toPosition());
+        //upcasting do ChessPiece para Piece
+        //o toPosition do ChessPositon retorna um Position
     }
 
     private void initialSetup(){
-        placeNewPiece('c', 1, new Rook(board, Color.WHITE));
+        placeNewPiece('c', 1, new Rook(board, Color.WHITE)); //upcasting
         placeNewPiece('c', 2, new Rook(board, Color.WHITE));
         placeNewPiece('d', 2, new Rook(board, Color.WHITE));
         placeNewPiece('e', 2, new Rook(board, Color.WHITE));
