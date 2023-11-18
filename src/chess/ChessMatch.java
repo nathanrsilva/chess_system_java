@@ -26,6 +26,12 @@ public class ChessMatch {
         return mat;
     }
 
+    public boolean[][] possibleMoves(ChessPosition sourcePosition){
+        Position position = sourcePosition.toPosition(); //upcasting to Position
+        validateSourcePosition(position);
+        return board.piece(position).possibleMoves(); //acho que o metodo vai vim de uma que tem o possibleMoves implementado
+    }
+
     public ChessPiece performChessMove(ChessPosition sourcePosition, ChessPosition targetPosition){
         Position source = sourcePosition.toPosition(); //de ChessPosition passa a ser Position -> upCasting
         Position target = targetPosition.toPosition(); //de ChessPosition passa a ser Position -> upCasting
