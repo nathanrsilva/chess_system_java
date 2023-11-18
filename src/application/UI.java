@@ -64,16 +64,16 @@ public class UI {
 
     private static void printPiece(ChessPiece piece, boolean background){
         if(background){
-            System.out.print(ANSI_BLACK_BACKGROUND);
+            System.out.print(ANSI_WHITE_BACKGROUND);
         }
         if (piece == null){
             System.out.print("-" + ANSI_RESET);
         }else{
             if (piece.getColor() == Color.WHITE) {
-                System.out.print(ANSI_CYAN + piece + ANSI_RESET);
+                System.out.print(ANSI_YELLOW + piece + ANSI_RESET);
             }
             else {
-                System.out.print(ANSI_PURPLE + piece + ANSI_RESET);
+                System.out.print(ANSI_RED + piece + ANSI_RESET);
             }
         }
         System.out.print(" ");
